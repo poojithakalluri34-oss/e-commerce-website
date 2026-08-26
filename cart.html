@@ -26,7 +26,7 @@
              <li><a href="about.html">About</a></li>
              <li><a href="contact.html">Contact</a></li>
              <li id="lg-bag"><a class="active" href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
-             <li><a href="#" id="close"><i class="far fa-times"></i></a></li>
+             
          </ul>
      </div>
 
@@ -77,30 +77,39 @@
     </section>
     <section id="cart-add" class="section-p1">
         <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
-            </div>
-        </div>
+    <h3>Apply Coupon</h3>
+
+    <div>
+        <input type="text" id="couponCode" placeholder="Enter Your Coupon">
+        <button class="normal" onclick="applyCoupon()">Apply</button>
+    </div>
+
+    <p id="couponMessage"></p>
+</div>
         <div id="subtotal">
-            <h3>Cart Totals</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td>$ 335</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>$ 335</strong></td>
-                </tr>
-            </table>
-            <button class="normal">Proceed to  checkout</button>
-        </div>
+    <h3>Cart Totals</h3>
+
+    <table>
+        <tr>
+            <td>Cart Subtotal</td>
+            <td id="cartSubtotal">$0</td>
+        </tr>
+
+        <tr>
+            <td>Shipping</td>
+            <td id="shipping">Free</td>
+        </tr>
+
+        <tr>
+            <td><strong>Total</strong></td>
+            <td><strong id="cartTotal">$0</strong></td>
+        </tr>
+    </table>
+
+    <button class="normal" onclick="proceedToCheckout()">
+    Proceed to Checkout
+</button>
+</div>
     </section>
     <footer class="section-p1">
         <div class="col">
@@ -154,6 +163,178 @@
 
 
     <script src="script.js"></script>
+    <script>
+function displayCart() {
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const cartBody = document.querySelector("#cart tbody");
+
+    if (!cartBody) {
+        return;
+    }
+
+    cartBody.innerHTML = "";
+
+    let total = 0;
+
+    if (cart.length === 0) {
+
+        cartBody.innerHTML = `
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    Your cart is empty
+                </td>
+            </tr>
+        `;
+
+        // Hide Cart Totals when cart is empty
+        document.getElementById("subtotal").style.display = "none";
+
+        return;
+    }
+
+    // Show Cart Totals when products exist
+    document.getElementById("subtotal").style.display = "block";
+
+
+    cart.forEach(function(product, index) {
+
+        const price = parseFloat(product.price);
+        const quantity = parseInt(product.quantity);
+
+        const subtotal = price * quantity;
+
+        total += subtotal;
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>
+                <a href="#" onclick="removeFromCart(${index}); return false;">
+                    <i class="far fa-times-circle"></i>
+                </a>
+            </td>
+
+            <td>
+                <img src="${product.image}" alt="">
+            </td>
+
+            <td>${product.name}</td>
+
+            <td>$${price.toFixed(2)}</td>
+
+            <td>
+                <input 
+                    type="number"
+                    value="${quantity}"
+                    min="1"
+                    onchange="updateQuantity(${index}, this.value)"
+                >
+            </td>
+
+            <td>$${subtotal.toFixed(2)}</td>
+        `;
+
+        cartBody.appendChild(row);
+    });
+
+
+    // Update totals
+   const discountAmount = total * (discount / 100);
+const finalTotal = total - discountAmount;
+
+document.getElementById("cartSubtotal").innerText =
+    "$" + total.toFixed(2);
+
+document.getElementById("cartTotal").innerText =
+    "$" + finalTotal.toFixed(2);
+}
+
+
+function removeFromCart(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+
+function updateQuantity(index, quantity) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    quantity = parseInt(quantity);
+
+    if (quantity < 1) {
+        quantity = 1;
+    }
+
+    cart[index].quantity = quantity;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+let discount = 0;
+
+function applyCoupon() {
+
+    const couponCode = document
+        .getElementById("couponCode")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const message = document.getElementById("couponMessage");
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        message.innerText = "Your cart is empty.";
+        return;
+    }
+
+    if (couponCode === "SAVE10") {
+
+        discount = 10;
+
+        message.innerText = "Coupon applied! 10% discount added.";
+
+        displayCart();
+
+    } else if (couponCode === "") {
+
+        message.innerText = "Please enter a coupon code.";
+
+    } else {
+
+        discount = 0;
+
+        message.innerText = "Invalid coupon code.";
+    }
+}
+
+
+displayCart();
+</script>
+<script>
+function proceedToCheckout() { 
+ 
+    const cart = JSON.parse(localStorage.getItem("cart")) || []; 
+ 
+    if (cart.length === 0) { 
+        alert("Your cart is empty. Please add a product first."); 
+        return; 
+    } 
+ 
+    window.location.href = "checkout.html"; 
+}
+</script>
  </body>
 
  </html>
