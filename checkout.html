@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
+
+<body>
+
+    <section id="header">
+
+        <a href="index.html">
+            <img src="img/logo.png" class="logo" alt="">
+        </a>
+
+        <div>
+            <ul id="navbar">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+                <li>
+                    <a href="cart.html">
+                        <i class="far fa-shopping-bag"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </section>
+
+
+    <section class="section-p1">
+
+        <h2>Checkout</h2>
+
+        <form id="checkoutForm">
+
+            <h3>Billing Details</h3>
+
+            <input type="text" id="name" placeholder="Full Name" required>
+
+            <input type="email" id="email" placeholder="Email Address" required>
+
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+
+            <input type="text" id="address" placeholder="Address" required>
+
+            <input type="text" id="city" placeholder="City" required>
+
+            <input type="text" id="pincode" placeholder="Pincode" required>
+
+            <h3>Payment Method</h3>
+
+            <select id="payment" required>
+                <option value="">Select Payment Method</option>
+                <option value="cod">Cash on Delivery</option>
+                <option value="card">Credit / Debit Card</option>
+                <option value="upi">UPI</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit" class="normal">
+                Place Order
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <script>
+
+        document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+                alert("Your cart is empty.");
+                return;
+            }
+
+            alert("Order placed successfully!");
+
+            localStorage.removeItem("cart");
+
+            window.location.href = "index.html";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

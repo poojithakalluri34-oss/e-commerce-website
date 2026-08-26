@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop - Page 2</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <section id="header">
+
+        <a href="index.html">
+            <img src="img/logo.png" class="logo" alt="Logo">
+        </a>
+
+        <div>
+            <ul id="navbar">
+
+                <li><a href="index.html">Home</a></li>
+
+                <li><a class="active" href="shop.html">Shop</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+                <li><a href="login.html">Login</a></li>
+
+                <li>
+                    <a href="cart.html">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </section>
+
+
+    <!-- Page Heading -->
+    <section id="page-header">
+
+        <h2>#stayhome</h2>
+
+        <p>Save more with coupons & up to 70% off!</p>
+
+    </section>
+
+
+    <!-- Products -->
+    <section id="product1" class="section-p1">
+
+        <div class="pro-container">
+
+            <!-- Product 1 -->
+            <div class="pro">
+
+                <img src="img/n1.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Stylish Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹799</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Stylish Product', 799, 'images/product1.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="pro">
+
+                <img src="img/n2.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Premium Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹999</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Premium Product', 999, 'images/product2.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="pro">
+
+                <img src="img/n3.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Classic Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹699</h4>
+
+                </div>
+
+               <a href="#" class="cart"
+   onclick="addToCart('Classic Product', 699, 'images/product3.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+            </div>
+
+
+            <!-- Product 4 -->
+            <div class="pro">
+
+                <img src="img/n4.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Trendy Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹899</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Trendy Product', 899, 'images/product4.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 5 -->
+            <div class="pro">
+
+                <img src="img/n5.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Beautiful Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹599</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Beautiful Product', 599, 'images/product5.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 6 -->
+            <div class="pro">
+
+                <img src="img/n6.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Fashion Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹749</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Fashion Product', 749, 'images/product6.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 7 -->
+            <div class="pro">
+
+                <img src="img/n7.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Modern Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹849</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Modern Product', 849, 'images/product7.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+
+            <!-- Product 8 -->
+            <div class="pro">
+
+                <img src="img/n8.jpg" alt="Product">
+
+                <div class="des">
+
+                    <span>Brand Name</span>
+
+                    <h5>Elegant Product</h5>
+
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+
+                    <h4>₹949</h4>
+
+                </div>
+
+                <a href="#" class="cart"
+   onclick="addToCart('Elegant Product', 949, 'images/product8.jpg'); return false;">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Pagination -->
+    <section id="pagination" class="section-p1">
+
+        <a href="shop.html">1</a>
+
+        <a href="shop2.html">2</a>
+
+        <a href="shop2.html">
+            <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="section-p1">
+
+        <div class="copyright">
+            <p>© 2026 Your Website. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
